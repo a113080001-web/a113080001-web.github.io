@@ -55,3 +55,101 @@ h2 {
     /* (可選) 加入牆面/紙張紋理背景圖 (圖片路徑相對於 mystyles.css 檔案) */
     /* background-image: url('../assets/img/white-wall-3-2.png'); */
 }
+
+/* ==========================================================
+   Love Grid Gallery Styles (「大好きなもの」を詰めた写真集風レイアウト)
+   ========================================================== */
+.love-grid-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+}
+
+.love-item {
+    background-color: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 16px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 180px;
+}
+
+/* ホバー時の浮き上がりエフェクト */
+.love-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+/* タブレット・PC表示（画面幅768px以上）での変則グリッド配置 */
+@media (min-width: 768px) {
+    .love-grid-gallery {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    /* 大きなメインカード（2カラム ＆ 2行分） */
+    .love-large {
+        grid-column: span 2;
+        grid-row: span 2;
+        background: linear-gradient(135deg, #fff5f8 0%, #ffe6ee 100%);
+        /* 少しときめく柔らかいグラデーション */
+    }
+
+    /* 横長カード（2カラム分） */
+    .love-wide {
+        grid-column: span 2;
+    }
+
+    /* 縦長カード（2行分） */
+    .love-tall {
+        grid-row: span 2;
+    }
+}
+
+/* テキストスタイル */
+.love-tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #e83e8c;
+    /* ラブリーなアクセントカラー（ピンク系） */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.love-item h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #212529;
+}
+
+.love-item p {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 写真をカードの大きさに合わせて綺麗に収めるスタイル */
+.love-photo {
+    width: 100%;
+    height: 140px;
+    /* 写真の高さ（お好みで調整してください） */
+    object-fit: cover;
+    /* 画像が歪まないように切り抜いて枠に合わせる */
+    border-radius: 10px;
+    margin-top: 12px;
+}
+
+/* ※一番大きな「love-large」のカードの中の写真だけ高さを変えたい場合 */
+.love-large .love-photo {
+    height: 220px;
+}
